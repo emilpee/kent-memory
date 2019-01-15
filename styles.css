@@ -1,7 +1,29 @@
+body {
+    font-family: itc-avant-garde-gothic-pro, century-gothic, sans-serif;
+    margin: auto;
+    text-align: center;
+    background-color: #000;
+    color: #22B2F0;
+    background-size: cover;
+}
+
 .card {
 
 }
 
 .cardContainer {
+}
 
+
+h1 {
+    font-weight: 100;
+}
+
+p {
+    font-style: normal;
+    font-weight: 300;
+}
+
+.startgamebutton {
+    font-size: 20px;
 }
