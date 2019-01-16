@@ -7,9 +7,16 @@ body {
     background-size: cover;
 }
 
-
 h1 {
     font-weight: 100;
+    font-size: 50px;
+    margin-bottom: -15px;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 25px;
+    font-style: italic;
 }
 
 p {
@@ -18,22 +25,42 @@ p {
 }
 
 .startgamebutton {
-    font-size: 20px;
+    background-color: #1DC3E6;
+    font-size: 30px;
+    color: white;
+    padding: 10px 40px 10px 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    outline: 0;
+    box-shadow: 0px 0px 9px 4px #22B2F0;
+    animation: glow 1.5s linear infinite alternate;
+    font-weight: 100;
+    transition: .2s ease;
 }
 
-img {
-    width: 20%;
+@keyframes glow {
+    to {
+        box-shadow: 0px 0px 30px 20px rgb(32, 36, 150);
+    }
 }
 
+.startgamebutton:hover {
+    background-color: black;
+    transition: 0.9s;
+    border: none;
+}
 
 .cardContainer {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
     justify-items: center;
-  }
+}
 
-  .card {
-    height: 130px;
+.card {
+    height: 150px;
     width: 150px;
-  }
+    border: 1px white solid;
+    border-radius: 1px;
+}
