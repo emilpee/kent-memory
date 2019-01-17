@@ -79,3 +79,15 @@ function shuffle(array) {
     }
     return array;
 }
+
+// Gör två kort klickbara 
+cardContainer.addEventListener('click', function(event) {
+   var twoCards = 0;
+   if (event.target.dataset.value == undefined) {
+       return;
+   }
+   if (twoCards < 2) {
+       twoCards++;
+       event.target.classList.add('selectedCard');
+   }
+});

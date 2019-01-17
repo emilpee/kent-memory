@@ -64,3 +64,18 @@ p {
     border: 1px white solid;
     border-radius: 1px;
 }
+
+.backButton {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    background-color: #1DC3E6;
+    border: none;
+    font-size: 1em;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.selectedCard {
+    border: 5px red solid;
+ }
