@@ -4,7 +4,6 @@ body {
     text-align: center;
     background-color: #000;
     color: #22B2F0;
-    background-size: cover;
 }
 
 h1 {
@@ -22,6 +21,16 @@ h2 {
 p {
     font-style: normal;
     font-weight: 300;
+}
+
+#content {
+    background-color: black;
+    border-radius: 5px;
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 .startgamebutton {
