@@ -55,10 +55,12 @@ const cardContainer = document.createElement('div');
 cardContainer.setAttribute('class', 'cardContainer');
 board.appendChild(cardContainer);
 
-
 // Skapa kopior av varje kort
 var allCardsCopy = allCards;
 const doubleImg = allCards.concat(allCardsCopy);
+
+// Blanda korten innan de skrivs ut
+shuffle(doubleImg);
 
 // Skriv ut kortens framsidor med respektive bild och tilldela dem klass
 doubleImg.forEach(item => {
@@ -69,3 +71,11 @@ doubleImg.forEach(item => {
     cardContainer.appendChild(card);
 }) 
 
+// Funktion som blandar alla kort
+function shuffle(array) {
+    for (let i = 0; i < doubleImg.length; i++) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
