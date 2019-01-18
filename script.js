@@ -1,4 +1,5 @@
-// Alla kort
+// import {allCards} from './modules/cards.js';
+
 const allCards = [{
         name: 'kent',
         img: 'images/kent.jpg',
@@ -56,14 +57,12 @@ const cardContainer = document.createElement('div');
 cardContainer.setAttribute('class', 'cardContainer');
 board.appendChild(cardContainer);
 
-
 // Skapa kopior av varje kort
 var allCardsCopy = allCards;
 const doubleImg = allCards.concat(allCardsCopy);
 
 // Blanda korten innan de skrivs ut
 shuffle(doubleImg);
-
 
 // Skriv ut kortens framsidor med respektive bild och tilldela dem klass
 doubleImg.forEach(item => {
@@ -74,6 +73,7 @@ doubleImg.forEach(item => {
     cardContainer.appendChild(card);
 })
 
+// Funktion som blandar alla kort
 function shuffle(array) {
     for (let i = 0; i < doubleImg.length; i++) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -83,51 +83,46 @@ function shuffle(array) {
 }
 
 // Gör två kort klickbara 
-var twoCards = 0;
+var flippedCards = 0;
 var guessOne = '';
 var guessTwo = '';
 var points = 0;
 
-
 cardContainer.addEventListener('click', function(event) {
     event.preventDefault();
-
     // Gör så att endast korten är klickbara
     if (event.target.dataset.value == undefined) {
         return;
     }
-    if (twoCards < 2) {
-        twoCards++;
+    if (flippedCards < 2) {
+        flippedCards++;
         event.target.classList.add('selectedCard');
     }
-    if (twoCards == 1) {
+    if (flippedCards == 1) {
         guessOne = event.target.dataset.value;
     }
-    if (twoCards == 2) {
+    if (flippedCards == 2) {
+        var selections = document.querySelectorAll('.selectedCard');
         guessTwo = event.target.dataset.value;
-
-        if (guessOne === guessTwo) {
-            console.log("Rätt!");
+        if (guessOne == guessTwo) {
             points++;
-            var selectedPair = document.querySelectorAll('.selectedCard');
-            selectedPair.forEach(card => {
+            selections.forEach(card => {
                 card.classList.add('wonCards');
-
             });
-
+            flippedCards = 0;
+            guessOne, guessTwo = '';
         } else {
-            console.log("Försök igen!");
+            selections.forEach(card => {
+                card.classList.remove('selectedCard');
+            });
+            flippedCards = 0;
+            guessOne, guessTwo = '';
         }
-
-
-
     }
 });
 
 
-
-
-
+//Timer
 function countdown() {
     var timeInSeconds = 60;
 

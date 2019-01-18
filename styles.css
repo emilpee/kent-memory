@@ -112,6 +112,5 @@ p {
 }
 
 .wonCards {
-    border: 4px solid yellow;
-    display: none;
+    visibility: hidden;
 }
