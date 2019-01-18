@@ -1,4 +1,5 @@
-// Alla kort
+// import {allCards} from './modules/cards.js';
+
 const allCards = [{
     name: 'kent',
     img: 'images/kent.jpg',
@@ -49,6 +50,7 @@ const allCards = [{
 },
 ];
 
+
 // Spara spelplan i variabel och placera ut kortbehållare
 const board = document.getElementById('board');
 const cardContainer = document.createElement('div');
@@ -81,13 +83,41 @@ function shuffle(array) {
 }
 
 // Gör två kort klickbara 
+var flippedCards = 0;
+var guessOne = '';
+var guessTwo = '';
+var points = 0;
+
 cardContainer.addEventListener('click', function(event) {
-   var twoCards = 0;
+    event.preventDefault();
+    // Gör så att endast korten är klickbara
    if (event.target.dataset.value == undefined) {
        return;
    }
-   if (twoCards < 2) {
-       twoCards++;
+   if (flippedCards < 2) {
+       flippedCards++;
        event.target.classList.add('selectedCard');
+   }
+   if (flippedCards == 1) {
+       guessOne = event.target.dataset.value;
+   }
+   if (flippedCards == 2) {
+      var selections = document.querySelectorAll('.selectedCard');
+      guessTwo = event.target.dataset.value;
+      if (guessOne == guessTwo) {
+          points++;
+          selections.forEach(card => {
+            card.classList.add('wonCards');
+          });
+          flippedCards = 0;
+          guessOne, guessTwo = '';
+      }
+      else {
+         selections.forEach(card => {
+            card.classList.remove('selectedCard');
+          });
+         flippedCards = 0;
+         guessOne, guessTwo = '';
+      }
    }
 });
