@@ -79,7 +79,11 @@ p {
 .selectedCard {
     border: 5px red solid;
  }
-
+ 
  .wonCards {
     visibility: hidden;
+ }
+
+ .noTarget {
+    pointer-events: none
  }

@@ -82,14 +82,20 @@ function shuffle(array) {
     return array;
 }
 
+
+
 // Gör två kort klickbara 
 var flippedCards = 0;
 var guessOne = '';
 var guessTwo = '';
 var points = 0;
+var previousTarget = null;
+
+// Skriv ut poäng
+var message = document.getElementById("message");
+message.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
-    event.preventDefault();
     // Gör så att endast korten är klickbara
    if (event.target.dataset.value == undefined) {
        return;
@@ -100,12 +106,14 @@ cardContainer.addEventListener('click', function(event) {
    }
    if (flippedCards == 1) {
        guessOne = event.target.dataset.value;
+       event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
    }
    if (flippedCards == 2) {
-      var selections = document.querySelectorAll('.selectedCard');
+    var selections = document.querySelectorAll('.selectedCard');
       guessTwo = event.target.dataset.value;
-      if (guessOne == guessTwo) {
+      if (guessOne === guessTwo) {
           points++;
+          message.innerHTML = points;
           selections.forEach(card => {
             card.classList.add('wonCards');
           });
@@ -114,10 +122,13 @@ cardContainer.addEventListener('click', function(event) {
       }
       else {
          selections.forEach(card => {
-            card.classList.remove('selectedCard');
-          });
-         flippedCards = 0;
-         guessOne, guessTwo = '';
-      }
+            setTimeout(function() {
+                card.classList.remove('selectedCard');
+                flippedCards = 0;
+                guessOne, guessTwo = ''
+                card.classList.remove('noTarget');
+          }, 1200);
+      });
    }
-});
+
+} })
