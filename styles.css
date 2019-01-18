@@ -1,116 +1,125 @@
-body {
-    font-family: itc-avant-garde-gothic-pro, century-gothic, sans-serif;
-    margin: auto;
-    text-align: center;
-    background-color: #000;
-    color: #22B2F0;
-}
-
-h1 {
-    font-weight: 100;
-    font-size: 50px;
-    margin-bottom: -15px;
-}
-
-h2 {
-    font-weight: 100;
-    font-size: 25px;
-    font-style: italic;
-}
-
-p {
-    font-style: normal;
-    font-weight: 300;
-}
-
-#content {
-    background-color: black;
-    border-radius: 5px;
-    margin: auto;
-    text-align: center;
-    width: 60%;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.startgamebutton {
-    background-color: #1DC3E6;
-    font-size: 30px;
-    color: white;
-    padding: 10px 40px 10px 40px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    outline: 0;
-    box-shadow: 0px 0px 9px 4px #22B2F0;
-    animation: glow 1.5s linear infinite alternate;
-    font-weight: 100;
-    transition: .2s ease;
-}
-
-@keyframes glow {
-    to {
-        box-shadow: 0px 0px 30px 20px rgb(32, 36, 150);
+    body {
+        font-family: itc-avant-garde-gothic-pro, century-gothic, sans-serif;
+        margin: auto;
+        text-align: center;
+        background-color: #000;
+        color: #22B2F0;
     }
-}
-
-.startgamebutton:hover {
-    background-color: black;
-    transition: 0.9s;
-    border: none;
-}
-
-.cardContainer {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
-    justify-items: center;
-}
-
-.card {
-    height: 150px;
-    width: 150px;
-    border: 1px white solid;
-    border-radius: 1px;
-}
-
-.backButton {
-    position: absolute;
-    left: 10px;
-    top: 0;
-    background-color: #1DC3E6;
-    border: none;
-    font-size: 1em;
-    margin-left: 15px;
-    margin-top: 5px;
-}
-
-.selectedCard {
-    border: 5px red solid;
-}
-
-#gametimer {
-    margin: 10px 10px 10px 10px;
-    font-size: 27px;
-    color: #b3eaff;
-}
-
-.restart {
-    background-color: #074B77;
-    font-size: 15px;
-    color: white;
-    padding: 10px 20px 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    margin: 10px 1px 30px 1px;
-}
-
-.restart:hover {
-    background-color: #1DC3E6;
-    transition: .2s ease;
-}
-
-.wonCards {
-    visibility: hidden;
-}
+    
+    h1 {
+        font-weight: 100;
+        font-size: 50px;
+        margin-bottom: -15px;
+    }
+    
+    h2 {
+        font-weight: 100;
+        font-size: 25px;
+        font-style: italic;
+    }
+    
+    p {
+        font-style: normal;
+        font-weight: 300;
+    }
+    
+    #content {
+        background-color: black;
+        border-radius: 5px;
+        margin: auto;
+        text-align: center;
+        width: 60%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    
+    .startgamebutton {
+        background-color: #1DC3E6;
+        font-size: 30px;
+        color: white;
+        padding: 10px 40px 10px 40px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        outline: 0;
+        box-shadow: 0px 0px 9px 4px #22B2F0;
+        animation: glow 1.5s linear infinite alternate;
+        font-weight: 100;
+        transition: .2s ease;
+    }
+    
+    @keyframes glow {
+        to {
+            box-shadow: 0px 0px 30px 20px rgb(32, 36, 150);
+        }
+    }
+    
+    .startgamebutton:hover {
+        background-color: black;
+        transition: 0.9s;
+        border: none;
+    }
+    
+    .cardContainer {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 10px;
+        justify-items: center;
+    }
+    
+    .card {
+        height: 150px;
+        width: 150px;
+        border: 1px white solid;
+        border-radius: 1px;
+        background-size: cover;
+        padding: 5px;
+        background: green;
+    }
+    
+    .cardtop {
+        background-color: yellow;
+        padding: 10px;
+    }
+    
+    .backButton {
+        position: absolute;
+        left: 10px;
+        top: 0;
+        background-color: #1DC3E6;
+        border: none;
+        font-size: 1em;
+        margin-left: 15px;
+        margin-top: 5px;
+    }
+    
+    .selectedCard {
+        border: 1px red solid;
+        background: none;
+    }
+    
+    #gametimer {
+        margin: 10px 10px 10px 10px;
+        font-size: 27px;
+        color: #b3eaff;
+    }
+    
+    .restart {
+        background-color: #074B77;
+        font-size: 15px;
+        color: white;
+        padding: 10px 20px 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        margin: 10px 1px 30px 1px;
+    }
+    
+    .restart:hover {
+        background-color: #1DC3E6;
+        transition: .2s ease;
+    }
+    
+    .wonCards {
+        visibility: hidden;
+    }

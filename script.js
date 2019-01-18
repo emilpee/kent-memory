@@ -1,8 +1,15 @@
 // import {allCards} from './modules/cards.js';
 
+
+
+
+bg: 'images/ros.jpg'
+
 const allCards = [{
         name: 'kent',
         img: 'images/kent.jpg',
+        bg: 'images/ros.jpg',
+
     },
     {
         name: 'verkligen',
@@ -61,6 +68,8 @@ board.appendChild(cardContainer);
 var allCardsCopy = allCards;
 const doubleImg = allCards.concat(allCardsCopy);
 
+
+
 // Blanda korten innan de skrivs ut
 shuffle(doubleImg);
 
@@ -71,7 +80,9 @@ doubleImg.forEach(item => {
     card.dataset.value = item.name;
     card.src = item.img;
     cardContainer.appendChild(card);
+
 })
+
 
 // Funktion som blandar alla kort
 function shuffle(array) {
@@ -134,7 +145,7 @@ function countdown() {
             setTimeout(clockTicking, 1000);
         } else {
 
-            alert("Spelet är slut");
+            //alert("Spelet är slut");
         }
     }
     clockTicking();
