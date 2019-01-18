@@ -91,9 +91,10 @@ var guessTwo = '';
 var points = 0;
 var previousTarget = null;
 
-// Skriv ut poäng
+// Poäng och meddelande
 var message = document.getElementById("message");
-message.innerHTML = points;
+var displayPoints = document.getElementById("points");
+displayPoints.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
     // Gör så att endast korten är klickbara
@@ -111,24 +112,31 @@ cardContainer.addEventListener('click', function(event) {
    if (flippedCards == 2) {
     var selections = document.querySelectorAll('.selectedCard');
       guessTwo = event.target.dataset.value;
+      console.log(flippedCards);
       if (guessOne === guessTwo) {
           points++;
-          message.innerHTML = points;
+         displayPoints.innerHTML = points;
           selections.forEach(card => {
             card.classList.add('wonCards');
           });
           flippedCards = 0;
           guessOne, guessTwo = '';
+          message.innerHTML = "Och jag vet, jag har rätt, du har fel";
+          setTimeout(function() {
+              message.innerHTML = '';
+          }, 2000);
       }
       else {
-         selections.forEach(card => {
+        selections.forEach(card => {
+            message.innerHTML = "Gör fel, gör om, gör rätt";
             setTimeout(function() {
                 card.classList.remove('selectedCard');
                 flippedCards = 0;
                 guessOne, guessTwo = ''
-                card.classList.remove('noTarget');
-          }, 1200);
-      });
-   }
-
-} })
+                card.classList.remove('noTarget'); // Gör bilder klickbara igen
+                message.innerHTML = '';
+            }, 1500);
+        });
+     }
+    } 
+})

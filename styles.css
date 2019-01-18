@@ -11,6 +11,7 @@ h1 {
     font-weight: 100;
     font-size: 50px;
     margin-bottom: -15px;
+    padding-top: 1%;
 }
 
 h2 {
@@ -79,11 +80,30 @@ p {
 .selectedCard {
     border: 5px red solid;
  }
- 
+
  .wonCards {
     visibility: hidden;
  }
 
  .noTarget {
     pointer-events: none
+ }
+
+ #message {
+     height: 50px;
+     margin-bottom: 10px;
+ }
+
+ .showPoints {
+    display: block;
+    margin: 8px;
+ }
+
+ .topbar {
+     background-color: #333333;
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     width: 100%;
  }
