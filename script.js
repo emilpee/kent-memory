@@ -1,6 +1,5 @@
 // import {allCards} from './modules/cards.js';
 
-
 bg: 'images/ros.jpg'
 
 const allCards = [{
@@ -100,34 +99,34 @@ var displayPoints = document.getElementById("points");
 displayPoints.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
-    // Gör så att endast korten är klickbara
-   if (event.target.dataset.value == undefined) {
-       return;
-   }
-   if (flippedCards < 2) {
-       flippedCards++;
-       event.target.classList.add('selectedCard');
-   }
-   if (flippedCards == 1) {
-       guessOne = event.target.dataset.value;
-       event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
-   }
-   if (flippedCards == 2) {
-    var selections = document.querySelectorAll('.selectedCard');
+        // Gör så att endast korten är klickbara
+    if (event.target.dataset.value == undefined) {
+        return;
+    }
+    if (flippedCards < 2) {
+        flippedCards++;
+        event.target.classList.toggle('selectedCard');
+    }
+    if (flippedCards == 1) {
+        guessOne = event.target.dataset.value;
+        event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
+    }
+    if (flippedCards == 2) {
+      var selections = document.querySelectorAll('.selectedCard');
       guessTwo = event.target.dataset.value;
       console.log(flippedCards);
       if (guessOne === guessTwo) {
-          points++;
-         displayPoints.innerHTML = points;
-          selections.forEach(card => {
-            card.classList.add('wonCards');
-          });
-          flippedCards = 0;
-          guessOne, guessTwo = '';
-          message.innerHTML = "Och jag vet, jag har rätt, du har fel";
-          setTimeout(function() {
-              message.innerHTML = '';
-          }, 2000);
+        points++;
+        displayPoints.innerHTML = points;
+        selections.forEach(card => {
+          card.classList.add('wonCards');
+        });
+        flippedCards = 0;
+        guessOne, guessTwo = '';
+        message.innerHTML = "Och jag vet, jag har rätt, du har fel";
+        setTimeout(function() {
+            message.innerHTML = '';
+        }, 2000);
       }
       else {
         selections.forEach(card => {
