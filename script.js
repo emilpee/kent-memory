@@ -1,12 +1,9 @@
 // import {allCards} from './modules/cards.js';
 
-bg: 'images/ros.jpg'
 
 const allCards = [{
         name: 'kent',
-        img: 'images/kent.jpg',
-        bg: 'images/ros.jpg',
-
+        img: 'images/kent.jpg'
     },
     {
         name: 'verkligen',
@@ -71,6 +68,7 @@ shuffle(doubleImg);
 // Skriv ut kortens framsidor med respektive bild och tilldela dem klass
 doubleImg.forEach(item => {
     var card = document.createElement('img');
+    card.classList.add('bg');
     card.classList.add('card');
     card.dataset.value = item.name;
     card.src = item.img;
@@ -99,7 +97,7 @@ var displayPoints = document.getElementById("points");
 displayPoints.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
-        // Gör så att endast korten är klickbara
+    event.target.classList.remove('bg');
     if (event.target.dataset.value == undefined) {
         return;
     }
@@ -136,6 +134,7 @@ cardContainer.addEventListener('click', function(event) {
                 flippedCards = 0;
                 guessOne, guessTwo = ''
                 card.classList.remove('noTarget'); // Gör bilder klickbara igen
+                card.classList.add('bg');
                 message.innerHTML = '';
             }, 1500);
         });
