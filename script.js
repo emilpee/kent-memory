@@ -1,12 +1,9 @@
 // import {allCards} from './modules/cards.js';
 
 
-bg: 'images/ros.jpg'
-
 const allCards = [{
         name: 'kent',
         img: 'images/kent.jpg',
-        bg: 'images/ros.jpg',
 
     },
     {
@@ -52,8 +49,14 @@ const allCards = [{
     {
         name: 'da-som-nu',
         img: 'images/da-som-nu.jpg',
+        bg: 'images/ros.jpg',
+
     },
 ];
+
+
+
+
 
 
 // Spara spelplan i variabel och placera ut kortbehållare
@@ -79,6 +82,7 @@ doubleImg.forEach(item => {
 })
 
 
+
 // Funktion som blandar alla kort
 function shuffle(array) {
     for (let i = 0; i < doubleImg.length; i++) {
@@ -101,63 +105,78 @@ displayPoints.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
     // Gör så att endast korten är klickbara
-   if (event.target.dataset.value == undefined) {
-       return;
-   }
-   if (flippedCards < 2) {
-       flippedCards++;
-       event.target.classList.add('selectedCard');
-   }
-   if (flippedCards == 1) {
-       guessOne = event.target.dataset.value;
-       event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
-   }
-   if (flippedCards == 2) {
-    var selections = document.querySelectorAll('.selectedCard');
-      guessTwo = event.target.dataset.value;
-      console.log(flippedCards);
-      if (guessOne === guessTwo) {
-          points++;
-         displayPoints.innerHTML = points;
-          selections.forEach(card => {
-            card.classList.add('wonCards');
-          });
-          flippedCards = 0;
-          guessOne, guessTwo = '';
-          message.innerHTML = "Och jag vet, jag har rätt, du har fel";
-          setTimeout(function() {
-              message.innerHTML = '';
-          }, 2000);
-      }
-      else {
-        selections.forEach(card => {
-            message.innerHTML = "Gör fel, gör om, gör rätt";
+    if (event.target.dataset.value == undefined) {
+        return;
+    }
+    if (flippedCards < 2) {
+        flippedCards++;
+        event.target.classList.add('selectedCard');
+    }
+
+
+    if (flippedCards == 1) {
+        guessOne = event.target.dataset.value;
+        event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
+    }
+    if (flippedCards == 2) {
+        var selections = document.querySelectorAll('.selectedCard');
+        guessTwo = event.target.dataset.value;
+        console.log(flippedCards);
+        if (guessOne === guessTwo) {
+            points++;
+            displayPoints.innerHTML = points;
+            selections.forEach(card => {
+                card.classList.add('wonCards');
+            });
+            flippedCards = 0;
+            guessOne, guessTwo = '';
+            message.innerHTML = "Och jag vet, jag har rätt";
             setTimeout(function() {
-                card.classList.remove('selectedCard');
-                flippedCards = 0;
-                guessOne, guessTwo = ''
-                card.classList.remove('noTarget'); // Gör bilder klickbara igen
                 message.innerHTML = '';
-            }, 1500);
-        });
-     }
-    } 
-})
-
-//Timer
-function countdown() {
-    var timeInSeconds = 60;
-
-    function clockTicking() {
-        var counter = document.getElementById("gametimer");
-        timeInSeconds--;
-        counter.innerHTML = "Tiden går: 0:" + (timeInSeconds < 10 ? "0" : "") + String(timeInSeconds);
-        if (timeInSeconds > 0) {
-            setTimeout(clockTicking, 1000);
+            }, 2000);
         } else {
-            //alert("Spelet är slut");
+            selections.forEach(card => {
+                message.innerHTML = "Gör fel, gör om, gör rätt";
+                setTimeout(function() {
+                    card.classList.remove('selectedCard');
+                    flippedCards = 0;
+                    guessOne, guessTwo = ''
+                    card.classList.remove('noTarget'); // Gör bilder klickbara igen
+                    message.innerHTML = '';
+                }, 1500);
+            });
         }
     }
-    clockTicking();
-}
-countdown();
+})
+
+
+//Timer
+var timeLeft = 60;
+var timeTick = setInterval(function() {
+    document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
+
+    if (timeLeft <= 0) {
+        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut :(</div>' +
+            '<br><img src=\"images/lose.gif\">' +
+            '<br><div id=\"finishedGamemenu\">&larr; Spela igen?</div>';;
+        document.getElementById("board").style.opacity = "0.4";
+        document.getElementById("board").style.pointerEvents = "none";
+
+        clearInterval(timeTick);
+    }
+
+    if (points == 12) {
+        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
+            '<br> <img src=\"images/win.gif\">' +
+            '<br><div id=\"finishedGamemenu\">&larr; Tillbaka</div>';
+        document.getElementById("board").style.opacity = "0.4";
+        document.getElementById("board").style.pointerEvents = "none";
+        document.getElementById("message").style.display = "none";
+
+    }
+
+    document.getElementById('finishedGamemenu').onclick = function() {
+        location.reload();
+    }
+
+}, 1000);
