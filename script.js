@@ -91,36 +91,40 @@ var guessOne = '';
 var guessTwo = '';
 var points = 0;
 
+function gameReset() {
+    flippedCards = 0;
+    guessOne, guessTwo = '';
+}
+
 // Poäng och meddelande
 var message = document.getElementById("message");
 var displayPoints = document.getElementById("points");
 displayPoints.innerHTML = points;
 
 cardContainer.addEventListener('click', function(event) {
-    event.target.classList.remove('bg');
-    if (event.target.dataset.value == undefined) {
+    let clickedCard = event.target;
+    clickedCard.classList.remove('bg'); // flip
+    if (clickedCard.dataset.value == undefined) {
         return;
     }
     if (flippedCards < 2) {
         flippedCards++;
-        event.target.classList.toggle('selectedCard');
+        clickedCard.classList.toggle('selectedCard');
     }
     if (flippedCards == 1) {
-        guessOne = event.target.dataset.value;
-        event.target.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
+        guessOne = clickedCard.dataset.value;
+        clickedCard.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
     }
     if (flippedCards == 2) {
       var selections = document.querySelectorAll('.selectedCard');
-      guessTwo = event.target.dataset.value;
-      console.log(flippedCards);
+      guessTwo = clickedCard.dataset.value;
       if (guessOne === guessTwo) {
         points++;
         displayPoints.innerHTML = points;
         selections.forEach(card => {
           card.classList.add('wonCards');
         });
-        flippedCards = 0;
-        guessOne, guessTwo = '';
+        gameReset();
         message.innerHTML = "Och jag vet, jag har rätt, du har fel";
         setTimeout(function() {
             message.innerHTML = '';
@@ -129,12 +133,12 @@ cardContainer.addEventListener('click', function(event) {
       else {
         selections.forEach(card => {
             message.innerHTML = "Gör fel, gör om, gör rätt";
+            cardContainer.classList.add('noTarget'); // Stäng av klickbarhet
             setTimeout(function() {
-                card.classList.remove('selectedCard');
-                flippedCards = 0;
-                guessOne, guessTwo = ''
-                card.classList.remove('noTarget'); // Gör bilder klickbara igen
                 card.classList.add('bg');
+                card.classList.remove('selectedCard');
+                gameReset();
+                card.classList.remove('noTarget'), cardContainer.classList.remove('noTarget'); // Gör bilder klickbara igen
                 message.innerHTML = '';
             }, 1500);
         });
