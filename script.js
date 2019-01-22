@@ -118,39 +118,38 @@ cardContainer.addEventListener('click', function(event) {
         clickedCard.classList.add('noTarget'); // Gör att bilden ej är klickbar igen
     }
     if (flippedCards == 2) {
-      var selections = document.querySelectorAll('.selectedCard');
-      guessTwo = clickedCard.dataset.value;
-      if (guessOne === guessTwo) {
-        points++;
-        displayPoints.innerHTML = points;
-        selections.forEach(card => {
-          card.classList.add('wonCards');
-        });
-        gameReset();
-        message.innerHTML = "Och jag vet, jag har rätt, du har fel";
-        setTimeout(function() {
-            message.innerHTML = '';
-        }, 2000);
-      }
-      else {
-        selections.forEach(card => {
-            message.innerHTML = "Gör fel, gör om, gör rätt";
-            cardContainer.classList.add('noTarget'); // Stäng av klickbarhet
+        var selections = document.querySelectorAll('.selectedCard');
+        guessTwo = clickedCard.dataset.value;
+        if (guessOne === guessTwo) {
+            points++;
+            displayPoints.innerHTML = points;
+            selections.forEach(card => {
+                card.classList.add('wonCards');
+            });
+            gameReset();
+            message.innerHTML = "Och jag vet, jag har rätt, du har fel";
             setTimeout(function() {
-                card.classList.add('bg');
-                card.classList.remove('selectedCard');
-                gameReset();
-                card.classList.remove('noTarget'), cardContainer.classList.remove('noTarget'); // Gör bilder klickbara igen
                 message.innerHTML = '';
             }, 2000);
-        })
-      }
+        } else {
+            selections.forEach(card => {
+                message.innerHTML = "Gör fel, gör om, gör rätt";
+                cardContainer.classList.add('noTarget'); // Stäng av klickbarhet
+                setTimeout(function() {
+                    card.classList.add('bg');
+                    card.classList.remove('selectedCard');
+                    gameReset();
+                    card.classList.remove('noTarget'), cardContainer.classList.remove('noTarget'); // Gör bilder klickbara igen
+                    message.innerHTML = '';
+                }, 2000);
+            })
+        }
     }
 })
 
 
 //Timer
-var timeLeft = 60;
+var timeLeft = 6000;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
@@ -160,6 +159,7 @@ var timeTick = setInterval(function() {
             '<br><div id=\"finishedGamemenu\">&larr; Spela igen?</div>';;
         document.getElementById("board").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
+
 
         clearInterval(timeTick);
     }
