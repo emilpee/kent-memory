@@ -91,9 +91,33 @@ p {
     padding: 5px;
 }
 
+.selectedCard {
+    transform: rotateY(-180deg);
+    transform: rotateX(-360deg);
+    box-shadow: 0px 0px 9px 4px #22B2F0;
+ }
+
+ .flipBack {
+        color: white;
+        transition: all 0.77s ease-out;
+        box-shadow: 0px 0px 9px 4px #22B2F0;
+ }
+
+
+ .card:hover {
+    transition: all 0.4s ease-out;
+ }
+
 .bg {
-    content: url('images/ros.jpg');
+    width: 160px;
+    height: 0px;
+    border: 1px white solid;
+    border-radius: 1px;
+    padding: 5px 5px 155px 5px;
+    background-image: url('images/ros.jpg');
+    background-size: cover;
 }
+
 
 .backButton {
     position: absolute;
@@ -104,11 +128,6 @@ p {
     font-size: 1em;
     margin-left: 15px;
     margin-top: 10px;
-}
-
-.selectedCard {
-    border: 1px red solid;
-    background: none;
 }
 
 #gametimer {

@@ -4,7 +4,6 @@
 const allCards = [{
         name: 'kent',
         img: 'images/kent.jpg',
-
     },
     {
         name: 'verkligen',
@@ -74,6 +73,7 @@ doubleImg.forEach(item => {
     card.classList.add('card');
     card.dataset.value = item.name;
     card.src = item.img;
+    card.alt = "Memorykort";
     cardContainer.appendChild(card);
 })
 
@@ -137,20 +137,23 @@ cardContainer.addEventListener('click', function(event) {
             message.innerHTML = "Gör fel, gör om, gör rätt";
             cardContainer.classList.add('noTarget'); // Stäng av klickbarhet
             setTimeout(function() {
-                card.classList.add('bg');
                 card.classList.remove('selectedCard');
+                card.classList.add('flipBack');
                 gameReset();
                 card.classList.remove('noTarget'), cardContainer.classList.remove('noTarget'); // Gör bilder klickbara igen
                 message.innerHTML = '';
             }, 2000);
+            setTimeout(function() {
+                card.classList.add('bg');
+                card.classList.remove('flipBack');
+            }, 2500);
         })
       }
     }
 })
 
-
 //Timer
-var timeLeft = 60;
+var timeLeft = 6005;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
@@ -158,9 +161,9 @@ var timeTick = setInterval(function() {
         document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut :(</div>' +
             '<br><img src=\"images/lose.gif\">' +
             '<br><div id=\"finishedGamemenu\">&larr; Spela igen?</div>';;
-        document.getElementById("board").style.opacity = "0.4";
+        document.querySelector(".cardContainer").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
-
+        document.querySelector(".topbar").style.backgroundColor = "black";
         clearInterval(timeTick);
     }
 
@@ -171,7 +174,6 @@ var timeTick = setInterval(function() {
         document.getElementById("board").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.getElementById("message").style.display = "none";
-
     }
 
     document.getElementById('finishedGamemenu').onclick = function() {
