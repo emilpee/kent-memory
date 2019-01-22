@@ -89,7 +89,10 @@ p {
     border-radius: 1px;
     background-size: cover;
     padding: 5px;
-    background: url('images/ros.jpg')
+}
+
+.bg {
+    content: url('images/ros.jpg');
 }
 
 .backButton {
