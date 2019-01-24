@@ -19,9 +19,15 @@ h2 {
     font-style: italic;
 }
 
+h4 {
+    display: inline-block;
+}
+
 p {
     font-style: normal;
     font-weight: 300;
+    margin-top: -35px;
+    line-height: 1.6em;
 }
 
 .headgame {
@@ -46,6 +52,8 @@ p {
     background-color: #1DC3E6;
     font-size: 30px;
     color: white;
+    width: 66%;
+    margin: 0 auto;
     padding: 10px 40px 10px 40px;
     border: none;
     cursor: pointer;
@@ -66,6 +74,7 @@ p {
 .startgamebutton:hover {
     background-color: black;
     transition: 0.9s;
+    color: white;
     border: none;
 }
 
@@ -99,28 +108,41 @@ p {
     padding: 5px;
 }
 
+.selectedCard {
+    transform: rotateY(-180deg);
+    transform: rotateX(-360deg);
+    box-shadow: 0px 0px 9px 4px #22B2F0;
+}
+
+.flipBack {
+    color: white;
+    transition: all 0.77s ease-out;
+    box-shadow: 0px 0px 9px 4px #22B2F0;
+}
+
 .card:hover {
     transition: all 0.3s ease-out;
 }
 
 .bg {
-    content: url('images/ros.jpg');
+    width: 120px;
+    height: 0px;
+    border: 1px white solid;
+    border-radius: 1px;
+    padding: 5px 5px 125px 5px;
+    background-image: url('images/ros.jpg');
+    background-size: cover;
 }
 
 .backButton {
     position: absolute;
-    left: 10px;
+    left: 0;
     top: 0;
+    padding: 7px;
     background-color: #1DC3E6;
     border: none;
     font-size: 1em;
     margin-left: 15px;
-    margin-top: 10px;
-}
-
-.selectedCard {
-    transform: rotateY(-180deg);
-    box-shadow: 0px 0px 9px 4px #22B2F0;
 }
 
 #gametimer {
@@ -130,7 +152,11 @@ p {
 }
 
 .wonCards {
-    visibility: hidden;
+    -webkit-transition: opacity 1.2s ease-in-out;
+    -moz-transition: opacity 1.2s ease-in-out;
+    -ms-transition: opacity 1.2s ease-in-out;
+    -o-transition: opacity 1.2s ease-in-out;
+    opacity: 0;
 }
 
 .noTarget {
@@ -202,7 +228,13 @@ p {
     right: 0;
     width: 100%;
     padding: 5px 0px 5px 0px;
-    height: 28px;
 }
 
-s
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
