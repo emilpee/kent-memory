@@ -124,7 +124,7 @@ cardContainer.addEventListener('click', function(event) {
         points++;
         displayPoints.innerHTML = points;
         gameReset();
-        message.innerHTML = "Och jag vet, jag har rätt, du har fel";
+        message.innerHTML = "Och jag vet, jag har rätt";
         setTimeout(function() {
             message.innerHTML = '';
             selections.forEach(card => {
@@ -153,35 +153,28 @@ cardContainer.addEventListener('click', function(event) {
 })
 
 //Timer
-var timeLeft = 6000;
+var timeLeft = 545;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
     if (timeLeft <= 0) {
         document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut :(</div>' +
             '<br><img src=\"images/lose.gif\">' +
-            '<br><div id=\"finishedGamemenu\">&larr; Spela igen?</div>';;
+            '<br><a href=\"gamepage.html\"><div id=\"finishedGamemenu\">&larr; Spela igen?</div></a>';
         document.querySelector(".cardContainer").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.querySelector(".topbar").style.backgroundColor = "black";
 
-
         clearInterval(timeTick);
     }
 
-    var finished = document.getElementById('gametimer');
-
     if (points == 12) {
-        finished.innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
+        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
             '<br> <img src=\"images/win.gif\">' +
-            '<br><div id=\"finishedGamemenu\">&larr; Tillbaka</div>';
+            '<br> <a href=\"gamepage.html\"> <div id=\"finishedGamemenu\">&larr; Tillbaka</div> </a>';
         document.getElementById("board").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.getElementById("message").style.display = "none";
     }
 
-    finished.addEventListener('click', function() {
-        location.reload();
-    })
-
-}, 1000);
+}, 1500);
