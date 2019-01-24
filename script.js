@@ -123,14 +123,14 @@ cardContainer.addEventListener('click', function(event) {
       if (guessOne === guessTwo) {
         points++;
         displayPoints.innerHTML = points;
-        selections.forEach(card => {
-          card.classList.add('wonCards');
-        });
         gameReset();
         message.innerHTML = "Och jag vet, jag har rätt, du har fel";
         setTimeout(function() {
             message.innerHTML = '';
-        }, 2000);
+            selections.forEach(card => {
+              card.classList.add('wonCards');
+            });
+        }, 1200);
       }
       else {
         selections.forEach(card => {
@@ -153,7 +153,7 @@ cardContainer.addEventListener('click', function(event) {
 })
 
 //Timer
-var timeLeft = 6005;
+var timeLeft = 60;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
@@ -167,8 +167,10 @@ var timeTick = setInterval(function() {
         clearInterval(timeTick);
     }
 
+    var finished = document.getElementById('gametimer');
+
     if (points == 12) {
-        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
+        finished.innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
             '<br> <img src=\"images/win.gif\">' +
             '<br><div id=\"finishedGamemenu\">&larr; Tillbaka</div>';
         document.getElementById("board").style.opacity = "0.4";
@@ -176,8 +178,8 @@ var timeTick = setInterval(function() {
         document.getElementById("message").style.display = "none";
     }
 
-    document.getElementById('finishedGamemenu').onclick = function() {
+    finished.addEventListener('click', function() {
         location.reload();
-    }
+    })
 
 }, 1000);
