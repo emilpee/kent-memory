@@ -154,28 +154,32 @@ cardContainer.addEventListener('click', function(event) {
 })
 
 //Timer
-var timeLeft = 545;
+var timeLeft = 6000;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
     if (timeLeft <= 0) {
-        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut :(</div>' +
+        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut</div>' +
             '<br><img src=\"images/lose.gif\">' +
-            '<br><a href=\"gamepage.html\"><div id=\"finishedGamemenu\">&larr; Spela igen?</div></a>';
+            '<br><a href=\"gamepage.html\"><div id=\"finishedGamemenu\">&larr; Börja om på nytt?</div></a>';
         document.querySelector(".cardContainer").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.querySelector(".topbar").style.backgroundColor = "black";
+        document.getElementById("showPoints").style.display = "none";
+
 
         clearInterval(timeTick);
     }
 
-    if (points == 12) {
+    if (points == 0) {
         document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
             '<br> <img src=\"images/win.gif\">' +
             '<br> <a href=\"gamepage.html\"> <div id=\"finishedGamemenu\">&larr; Tillbaka</div> </a>';
         document.getElementById("board").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.getElementById("message").style.display = "none";
+        document.getElementById("showPoints").style.display = "none";
+
     }
 
 }, 1500);
