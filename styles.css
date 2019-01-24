@@ -18,15 +18,23 @@ h2 {
     font-size: 20px;
     font-style: italic;
 }
+
 h4 {
-    display: inline-block;  
+    display: inline-block;
 }
 
 p {
     font-style: normal;
     font-weight: 300;
-    margin-top: -35px;
+    margin-top: -15px;
     line-height: 1.6em;
+}
+a:link {
+    text-decoration: none;
+    color: white;
+}
+a:visited {
+    color: white;
 }
 
 .headgame {
@@ -77,19 +85,21 @@ p {
     border: none;
 }
 
+#board {}
+
 #contentGame {
     margin: 0 auto;
-    margin-top: 55px;
+    margin-top: 59px;
     margin-bottom: 100px;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
+    #board {
         margin: 0 auto;
-        width: 100%;
+        width: 50%;
     }
-    #content {
-        width: 90%;
+    .topbar {
+        display: none;
     }
 }
 
@@ -101,45 +111,82 @@ p {
     justify-content: center;
 }
 
+@media only screen and (max-width: 600px) {
+    .cardContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 60px);
+        grid-gap: 8px;
+        justify-items: center;
+        justify-content: center;
+        grid-template-rows: repeat(6, 53px);
+    }
+}
+
 .card {
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     border-radius: 1px;
     background-size: cover;
     padding: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+    }
 }
 
 .selectedCard {
     transform: rotateY(-180deg);
     transform: rotateX(-360deg);
     box-shadow: 0px 0px 9px 4px #22B2F0;
- }
+}
 
- .flipBack {
-        color: white;
-        transition: all 0.77s ease-out;
-        box-shadow: 0px 0px 9px 4px #22B2F0;
- }
+@media only screen and (max-width: 600px) {
+    .selectedCard {
+        box-shadow: none;
+    }
+}
+
+.flipBack {
+    color: white;
+    transition: all 0.77s ease-out;
+}
 
 .card:hover {
     transition: all 0.3s ease-out;
 }
 
 .bg {
-    width: 100px;
+    width: 120px;
     height: 0px;
     border: 1px white solid;
     border-radius: 1px;
-    padding: 5px 5px 105px 5px;
+    padding: 5px 5px 125px 5px;
     background-image: url('images/ros.jpg');
     background-size: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .bg {
+        width: 50px;
+        height: 0px;
+        border: 1px white solid;
+        border-radius: 1px;
+        padding: 5px 5px 50px 5px;
+        background-image: url('images/ros.jpg');
+        background-size: cover;
+        margin: 10px;
+    }
 }
 
 .backButton {
     position: absolute;
     left: 0;
     top: 0;
-    padding: 5px;
+    padding: 7px;
     background-color: #1DC3E6;
     border: none;
     font-size: 1em;
@@ -157,7 +204,7 @@ p {
     -moz-transition: opacity 1.2s ease-in-out;
     -ms-transition: opacity 1.2s ease-in-out;
     -o-transition: opacity 1.2s ease-in-out;
-     opacity: 0;    
+    opacity: 0;
 }
 
 .noTarget {
@@ -165,8 +212,8 @@ p {
 }
 
 #message {
-    height: 40px;
-    margin-bottom: -55px;
+    height: 50px;
+    margin-bottom: -63px;
     margin-top: 110px;
 }
 
@@ -212,12 +259,12 @@ p {
     cursor: pointer;
 }
 
-.showPoints {
+.showPointsMobile {
     font-weight: 100;
     font-size: 19px;
     position: absolute;
     text-align: center;
-    left: 900px;
+    left: 90px;
     font-style: italic;
 }
 
@@ -231,11 +278,25 @@ p {
     padding: 5px 0px 5px 0px;
 }
 
-a:link {
-    text-decoration: none;
-    color: white;
-}
-
-a:visited {
-    color: white;
+@media only screen and (max-width: 600px) {
+    #finishedGame,
+    #finishedGamemenu {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    img {
+        width: 50%;
+    }
+    #gametimer {
+        margin: 15px 0px -100px 0px;
+        font-size: 22px;
+        color: #b3eaff;
+    }
+    .showPointsMobile {
+        visibility: visible;
+        color: red;
+        margin-top: 102px;
+        position: absolute;
+        font-size: 19px;
+    }
 }

@@ -106,7 +106,8 @@ displayPoints.innerHTML = points;
 cardContainer.addEventListener('click', function(event) {
     let clickedCard = event.target;
     clickedCard.classList.remove('bg'); // flip
-    if (clickedCard.dataset.value == undefined) {
+    // Undvik klick på spelplan och vunna kort
+    if (clickedCard.dataset.value == undefined || clickedCard.classList.contains("wonCards")) {
         return;
     }
     if (flippedCards < 2) {
