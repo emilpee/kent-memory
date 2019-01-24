@@ -69,10 +69,7 @@ p {
     border: none;
 }
 
-#board {
-    margin: 0 auto;
-    width: 77%;
-}
+#board {}
 
 #contentGame {
     margin: 0 auto;
