@@ -8,14 +8,14 @@ body {
 
 h1 {
     font-weight: 100;
-    font-size: 50px;
-    margin-bottom: -15px;
-    padding-top: 1.5%;
+    font-size: 30px;
+    margin-bottom: 8px;
+    margin-top: -8px;
 }
 
 h2 {
     font-weight: 100;
-    font-size: 25px;
+    font-size: 20px;
     font-style: italic;
 }
 h4 {
@@ -27,6 +27,14 @@ p {
     font-weight: 300;
     margin-top: -35px;
     line-height: 1.6em;
+}
+
+.headgame {
+    font-weight: 100;
+    font-size: 19px;
+    text-align: center;
+    /* margin: 0 auto; */
+    font-style: italic;
 }
 
 #content {
@@ -69,9 +77,13 @@ p {
     border: none;
 }
 
-#contentGame {
+#board {
     margin: 0 auto;
     width: 77%;
+}
+
+#contentGame {
+    margin: 0 auto;
     margin-top: 59px;
     margin-bottom: 100px;
 }
@@ -91,9 +103,8 @@ p {
 }
 
 .card {
-    height: 150px;
-    width: 150px;
-    border: 1px white solid;
+    height: 120px;
+    width: 120px;
     border-radius: 1px;
     background-size: cover;
     padding: 5px;
@@ -111,9 +122,9 @@ p {
         box-shadow: 0px 0px 9px 4px #22B2F0;
  }
 
- .card:hover {
-    transition: all 0.4s ease-out;
- }
+.card:hover {
+    transition: all 0.3s ease-out;
+}
 
 .bg {
     width: 160px;
@@ -136,12 +147,16 @@ p {
     font-size: 1em;
     margin-left: 15px;
     margin-top: 10px;
-    border-radius: 5px;
+}
+
+.selectedCard {
+    transform: rotateY(-180deg);
+    box-shadow: 0px 0px 9px 4px #22B2F0;
 }
 
 #gametimer {
-    margin: 10px;
-    font-size: 27px;
+    margin: 52px 0px -100px 0px;
+    font-size: 22px;
     color: #b3eaff;
 }
 
@@ -159,7 +174,8 @@ p {
 
 #message {
     height: 50px;
-    margin-bottom: 10px;
+    margin-bottom: -63px;
+    margin-top: 110px;
 }
 
 #finishedGame {
@@ -205,12 +221,16 @@ p {
 }
 
 .showPoints {
-    display: block;
-    margin: 8px;
+    font-weight: 100;
+    font-size: 19px;
+    position: absolute;
+    text-align: center;
+    left: 900px;
+    font-style: italic;
 }
 
 .topbar {
-    background-color: #333333;
+    background-color: rgb(28, 28, 28);
     position: fixed;
     top: 0;
     left: 0;

@@ -153,7 +153,7 @@ cardContainer.addEventListener('click', function(event) {
 })
 
 //Timer
-var timeLeft = 60;
+var timeLeft = 6000;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
@@ -164,6 +164,8 @@ var timeTick = setInterval(function() {
         document.querySelector(".cardContainer").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
         document.querySelector(".topbar").style.backgroundColor = "black";
+
+
         clearInterval(timeTick);
     }
 
