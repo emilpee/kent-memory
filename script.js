@@ -174,7 +174,6 @@ var timeTick = setInterval(function() {
         document.getElementById("board").style.pointerEvents = "none";
         document.getElementById("message").style.display = "none";
         document.getElementById("showPoints").style.display = "none";
-
     }
 
 }, 1500);
