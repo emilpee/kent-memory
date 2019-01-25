@@ -45,8 +45,6 @@ const allCards = [{
     {
         name: 'da-som-nu',
         img: 'images/da-som-nu.jpg',
-        bg: 'images/ros.jpg',
-
     },
 ];
 
@@ -174,7 +172,6 @@ var timeTick = setInterval(function() {
         document.getElementById("board").style.pointerEvents = "none";
         document.getElementById("message").style.display = "none";
         document.getElementById("showPoints").style.display = "none";
-
     }
 
 }, 1500);
