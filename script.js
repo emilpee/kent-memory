@@ -1,6 +1,3 @@
-// import {allCards} from './modules/cards.js';
-
-
 const allCards = [{
         name: 'kent',
         img: 'images/kent.jpg',
