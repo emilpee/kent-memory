@@ -154,7 +154,8 @@ cardContainer.addEventListener('click', function(event) {
 //Timer
 var timeLeft = 60;
 var timeTick = setInterval(function() {
-    document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
+    document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") +
+        --timeLeft;
 
     if (timeLeft <= 0) {
         document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut</div>' +
