@@ -45,7 +45,7 @@ const allCards = [{
     {
         name: 'da-som-nu',
         img: 'images/da-som-nu.jpg',
-        bg: 'images/ros.jpg',
+
 
     },
 ];
