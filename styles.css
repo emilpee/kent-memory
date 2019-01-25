@@ -129,7 +129,7 @@ p {
     position: absolute;
     left: 0;
     top: 0;
-    padding: 7px;
+    padding: 6px;
     background-color: #1DC3E6;
     border: none;
     font-size: 1em;
@@ -189,6 +189,7 @@ p {
     transition: .2s ease;
     display: inline-block;
     margin-top: 30px;
+    margin-bottom: 60px;
 }
 
 #finishedGamemenu:hover {
@@ -212,6 +213,10 @@ p {
     padding: 5px 0px 5px 0px;
 }
 
+.winpic {
+    width: 15%;
+}
+
 a:link {
     text-decoration: none;
     color: white;
@@ -232,7 +237,7 @@ a:visited {
     #finishedGame,
     #finishedGamemenu {
         font-size: 15px;
-        margin-bottom: 35px;
+        margin-bottom: 65px;
     }
     img {
         width: 50%;
@@ -270,5 +275,8 @@ a:visited {
     }
     .selectedCard {
         box-shadow: none;
+    }
+    .winpic {
+        width: 30%;
     }
 }

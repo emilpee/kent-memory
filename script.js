@@ -77,7 +77,6 @@ doubleImg.forEach(item => {
     cardContainer.appendChild(card);
 })
 
-
 // Funktion som blandar alla kort
 function shuffle(array) {
     for (let i = 0; i < doubleImg.length; i++) {
@@ -154,7 +153,7 @@ cardContainer.addEventListener('click', function(event) {
 })
 
 //Timer
-var timeLeft = 6000;
+var timeLeft = 60;
 var timeTick = setInterval(function() {
     document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") + --timeLeft;
 
@@ -167,13 +166,12 @@ var timeTick = setInterval(function() {
         document.querySelector(".topbar").style.backgroundColor = "black";
         document.getElementById("showPoints").style.display = "none";
 
-
         clearInterval(timeTick);
     }
 
-    if (points == 0) {
+    if (points == 12) {
         document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
-            '<br> <img src=\"images/win.gif\">' +
+            '<br> <img class=\"winpic\" src=\"images/win.gif\">' +
             '<br> <a href=\"gamepage.html\"> <div id=\"finishedGamemenu\">&larr; Tillbaka</div> </a>';
         document.getElementById("board").style.opacity = "0.4";
         document.getElementById("board").style.pointerEvents = "none";
