@@ -111,7 +111,7 @@ var timeTick = setInterval(() => {
     if (timeLeft <= 0) {
         board.innerHTML = `
             <div id=\"finishedGame\">Tyvärr, tiden tog slut</div>
-            <img class="loseImg" src=\"images/lose.gif\">
+            <img class="loseImg" src=\"../images/lose.gif\">
                 <div id=\"finishedGamemenu\">
                     &larr; Börja om på nytt?
                 </div>
@@ -130,7 +130,7 @@ var timeTick = setInterval(() => {
     else if (points == 12) {
         board.innerHTML = `
             <div id=\"finishedGame\">Får jag gratulera, du vann kent memory med stil!</div>
-            <img class=\"winpic\" src=\"images/win.gif\">
+            <img class=\"winpic\" src=\"../images/win.gif\">
             <a href=\"spela.html\"> 
               <div id=\"finishedGamemenu\">&larr; Tillbaka</div>
             </a>
