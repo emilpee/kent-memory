@@ -1,0 +1,303 @@
+body {
+    font-family: itc-avant-garde-gothic-pro, century-gothic, sans-serif;
+    margin: 0;
+    background-color: #000;
+    color: #22B2F0;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* Game container */
+    #gameContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+
+        /* Top menu */
+        .topbar {
+            display: flex;
+            height: 2rem;
+            flex-direction: row;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: space-between;
+            align-items: center;
+
+            &.headgame {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex: 1;
+                padding: .5rem;
+            }
+
+            .backButton {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex: 1;
+                padding: .5rem;
+                background: #22B2F0;
+                border: 0;
+                border-radius: 3px;
+                color: white;
+            }
+
+            &.backButton:hover {
+                color: #22B2F0;
+                background: white;
+            }
+
+        }
+
+    /* Message bar and timer */
+    #messagebar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        flex-direction: column;
+
+        #gametimer {
+            color: #b3eaff;
+            flex: 1;
+            margin-top: 2.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #message {
+            font-style: italic;
+            flex: 1;
+        }
+    }
+
+    #contentGame {
+
+      #board {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: .5rem;
+
+        .cardContainer {
+            display: grid;
+            grid-gap: 1rem;
+            width: 80vw;
+            grid-template-columns: repeat(6, 8rem);
+            justify-content: center;
+        }
+        
+        .loseImg, .winpic {
+           margin: 2.5rem;
+        }
+    
+        .card {
+            height: 110px;
+            width: 110px;
+            border-radius: 3px;
+            background-size: cover;
+            background-position: center center;
+            transition: transform 1s ease;
+
+            &:hover {
+                transition: all 0.3s ease-out;
+            }
+
+            &.bg {
+                height: 0px;
+                border: 1px white solid;
+                padding: 0px 0px 110px 0px;
+                background: url('../images/ros.jpg');
+                background-size: cover;
+                transform: rotateY(0deg);
+            }
+
+        }
+    
+        .selectedCard {
+            transform: rotateZ(360deg);
+            background-position: center center;
+            box-shadow: 0px 0px 9px 4px #22B2F0;
+        }
+    
+        .flipBack {
+            color: white;
+            transition: all .5s ease-out;
+        }
+
+        .wonCards {
+            transition: opacity 1s ease;
+            opacity: 0;
+        }
+    
+        .noTarget {
+            pointer-events: none
+        }
+
+        #finishedGame {
+            padding: 1rem;
+            margin-top: 5rem;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 50vw;
+            border-radius: 4px;
+            background: #1DC3E6;
+            color: white;
+            outline: 0;
+            box-shadow: 0px 0px 9px 4px #22B2F0;
+            animation: glow 1.5s linear infinite alternate;
+            font-weight: 100;
+            transition: .2s ease;
+
+            p {
+                font-weight: 700;
+            }
+        }
+
+        @keyframes glow {
+            to {
+                box-shadow: 0px 0px 30px 20px rgb(32, 36, 150);
+            }
+        }
+
+        #finishedGamemenu {
+            display: flex;
+            width: 50vw;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background-color: #1DC3E6;
+            color: white;
+            border: none;
+            outline: 0;
+            box-shadow: 0px 0px 9px 4px #22B2F0;
+            font-weight: 100;
+        }
+
+        #finishedGamemenu:hover {
+            transition: .2s ease;
+            cursor: pointer;
+        }
+      }
+    }
+  }
+
+    /* Startsida */
+    #content {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            margin: 0;
+            padding-top: .5rem;
+            font-weight: 200;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            font-weight: 100;
+            font-size: 1.2em;
+            font-style: italic;
+            margin: .5rem;
+        }
+
+
+        p {
+            font-weight: 300;
+            line-height: 1.6em;
+        }
+
+        /* Game button */
+        .startgamebutton {
+            background-color: #1DC3E6;
+            font-size: 1.5em;
+            color: white;
+            padding: 1.25rem;
+            border: none;
+            width: 90vw;
+            margin: .5rem;
+            max-width: 500px;
+            cursor: pointer;
+            border-radius: 3rem;
+            outline: 0;
+            box-shadow: 0px 0px 9px 4px #22B2F0;
+            animation: glow 1.5s linear infinite alternate;
+            font-weight: 100;
+            transition: .2s ease;
+        }
+
+        @keyframes glow {
+            to {
+                box-shadow: 0px 0px 30px 20px rgb(32, 36, 150);
+            }
+        }
+
+        .startgamebutton:hover {
+            background-color: black;
+            transition: 1.5s ease;
+            color: white;
+            border: none;
+        }
+
+        .doden {
+            margin-top: 2rem;
+            border-radius: 90px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+
+        #gameContainer {
+
+            .topbar {
+                flex-direction: column;
+                width: 100vw; 
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        #contentGame {
+
+            #board {
+            .cardContainer {
+                display: grid;
+                grid-template-columns: repeat(3, 5rem) !important;
+                grid-template-rows: repeat(8, auto) !important;
+                width: 100vw;
+                align-items: center;
+            }
+
+            .card {
+                width: 30px;
+                height: 30px;
+
+                &.bg {
+                    padding: 0px 0px 30px 0px
+                }
+            }
+
+            .selectedCard {
+                box-shadow: none;
+            }
+            }
+        }
+    
+    }
+    
+}

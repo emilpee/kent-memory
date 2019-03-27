@@ -1,57 +1,15 @@
-const allCards = [{
-        name: 'kent',
-        img: 'images/kent.jpg',
-    },
-    {
-        name: 'verkligen',
-        img: 'images/verkligen.jpg',
-    },
-    {
-        name: 'isola',
-        img: 'images/isola.jpg',
-    },
-    {
-        name: 'hagnesta-hill',
-        img: 'images/hagnesta-hill.jpg',
-    },
-    {
-        name: 'vapen-o-ammunition',
-        img: 'images/vapen-o-ammunition.jpg',
-    },
-    {
-        name: 'du-och-jag-doden',
-        img: 'images/du-och-jag-doden.jpg',
-    },
-    {
-        name: 'tillbaka-till-samtiden',
-        img: 'images/tillbaka-till-samtiden.jpg',
-    },
-    {
-        name: 'rod',
-        img: 'images/rod.jpg',
-    },
-    {
-        name: 'en-plats-i-solen',
-        img: 'images/en-plats-i-solen.jpg',
-    },
-    {
-        name: 'jag-ar-inte',
-        img: 'images/jag-ar-inte.jpg',
-    },
-    {
-        name: 'tigerdrottningen',
-        img: 'images/tigerdrottningen.jpg',
-    },
-    {
-        name: 'da-som-nu',
-        img: 'images/da-som-nu.jpg',
+import allCards from './cards.js';
 
-
-    },
-];
+var flippedCards = 0;
+var guessOne = '';
+var guessTwo = '';
+var points = 0;
+var timeLeft = 60;
+var winTime = 1000;
+var loseTime = 2000;
 
 // Spara spelplan i variabel och placera ut kortbehållare
-const board = document.getElementById('board');
+const board = document.querySelector('#board');
 const cardContainer = document.createElement('div');
 cardContainer.setAttribute('class', 'cardContainer');
 board.appendChild(cardContainer);
@@ -83,23 +41,18 @@ function shuffle(array) {
     return array;
 }
 
-// Gör två kort klickbara 
-var flippedCards = 0;
-var guessOne = '';
-var guessTwo = '';
-var points = 0;
-
+// Reset game
 function gameReset() {
     flippedCards = 0;
     guessOne, guessTwo = '';
 }
 
 // Poäng och meddelande
-var message = document.getElementById("message");
-var displayPoints = document.getElementById("points");
+var message = document.querySelector("#message");
+var displayPoints = document.querySelector("#points");
 displayPoints.innerHTML = points;
 
-cardContainer.addEventListener('click', function(event) {
+cardContainer.addEventListener('click', (event) => {
     let clickedCard = event.target;
     clickedCard.classList.remove('bg'); // flip
     // Undvik klick på spelplan och vunna kort
@@ -121,13 +74,13 @@ cardContainer.addEventListener('click', function(event) {
             points++;
             displayPoints.innerHTML = points;
             gameReset();
-            message.innerHTML = "Och jag vet, jag har rätt";
+            message.innerHTML = "Och jag vet, jag har rätt, du har fel";
             setTimeout(function() {
                 message.innerHTML = '';
                 selections.forEach(card => {
                     card.classList.add('wonCards');
                 });
-            }, 1200);
+            }, winTime);
         } else {
             selections.forEach(card => {
                 message.innerHTML = "Gör fel, gör om, gör rätt";
@@ -138,42 +91,57 @@ cardContainer.addEventListener('click', function(event) {
                     gameReset();
                     card.classList.remove('noTarget'), cardContainer.classList.remove('noTarget'); // Gör bilder klickbara igen
                     message.innerHTML = '';
-                }, 2000);
+                }, loseTime);
                 setTimeout(function() {
                     card.classList.add('bg');
                     card.classList.remove('flipBack');
-                }, 2500);
+                }, loseTime);
             })
         }
     }
 })
 
 //Timer
-var timeLeft = 60;
-var timeTick = setInterval(function() {
-    document.getElementById('gametimer').innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") +
+const gameTimer = document.querySelector('#gametimer');
+var timeTick = setInterval(() => {
+    gameTimer.innerHTML = "Tiden går: 0:" + (timeLeft < 11 ? "0" : "") +
         --timeLeft;
 
+
     if (timeLeft <= 0) {
-        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Tyvärr, tiden tog slut</div>' +
-            '<br><img src=\"images/lose.gif\">' +
-            '<br><a href=\"gamepage.html\"><div id=\"finishedGamemenu\">&larr; Börja om på nytt?</div></a>';
-        document.querySelector(".cardContainer").style.opacity = "0.4";
-        document.getElementById("board").style.pointerEvents = "none";
-        document.querySelector(".topbar").style.backgroundColor = "black";
-        document.getElementById("showPoints").style.display = "none";
+        board.innerHTML = `
+            <div id=\"finishedGame\">Tyvärr, tiden tog slut</div>
+            <img class="loseImg" src=\"images/lose.gif\">
+                <div id=\"finishedGamemenu\">
+                    &larr; Börja om på nytt?
+                </div>
+            </a>
+        `;
+        cardContainer.style.opacity = "0.4";
+        document.querySelector("#messagebar").style.display = "none";
+
+        document.querySelector('#finishedGamemenu').addEventListener('click', () => {
+            window.location.reload();
+        })
 
         clearInterval(timeTick);
+    } 
+    
+    else if (points == 12) {
+        board.innerHTML = `
+            <div id=\"finishedGame\">Får jag gratulera, du vann kent memory med stil!</div>
+            <img class=\"winpic\" src=\"images/win.gif\">
+            <a href=\"spela.html\"> 
+              <div id=\"finishedGamemenu\">&larr; Tillbaka</div>
+            </a>
+        `;
+
+        document.querySelector("#messagebar").style.display = "none";
+        document.querySelector('#finishedGamemenu').addEventListener('click', () => {
+            window.location.reload();
+        })
+
     }
 
-    if (points == 12) {
-        document.getElementById('gametimer').innerHTML = '<div id=\"finishedGame\">Får jag gratulera, du vann <b>kent memory</b> med stil!</div>' +
-            '<br> <img class=\"winpic\" src=\"images/win.gif\">' +
-            '<br> <a href=\"gamepage.html\"> <div id=\"finishedGamemenu\">&larr; Tillbaka</div> </a>';
-        document.getElementById("board").style.opacity = "0.4";
-        document.getElementById("board").style.pointerEvents = "none";
-        document.getElementById("message").style.display = "none";
-        document.getElementById("showPoints").style.display = "none";
-    }
+}, loseTime);
 
-}, 1500);

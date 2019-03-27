@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Kent Memory</title>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <div class="topbar">
+            <a href="index.html">
+                <button class="backButton">&larr; Den andra sidan</button>
+            </a>
+            <div class="headgame"> kent memory - ett tidsfördriv att dö för</div>
+            <div id="showPoints">Poäng: <span id="points"></span>/12</div>
+        </div>
+
+        <div id="messagebar">
+            <div id="gametimer"></div>
+            <p id="message"></p>
+        </div>
+
+        <div id="contentGame">
+            <div id="board"></div>
+        </div>
+    </div>
+    <script src="js/script.js" type="module"></script>
+</body>
